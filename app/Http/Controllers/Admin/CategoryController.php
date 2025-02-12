@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
@@ -12,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $data['records']=Category::all();
+        return view('admin.category.index',compact('data'));
     }
 
     /**
@@ -20,15 +24,27 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories=Category::all();
+        return view('admin.category.create',compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+     $validated = $request->validated();
+     
+   
+    $data['records'] = Category::create($request->all());
+    if($data){
+        $request->session()->flash('success','Category Add Successfully');
+    }else {
+        $request->session()->flash('error','Failed');
+    }
+    $data['records']=Category::all();
+        return view('admin.category.index',compact('data'));
+        
     }
 
     /**

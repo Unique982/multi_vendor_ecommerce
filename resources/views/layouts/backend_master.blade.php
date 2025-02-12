@@ -70,8 +70,8 @@
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Manage Category</h6>
-                    <a class="collapse-item" href="">Create</a>
-                    <a class="collapse-item" href="">List</a>
+                    <a class="collapse-item" href="{{ route('backend.category.create') }}">Create</a>
+                    <a class="collapse-item" href="{{ route('backend.category.index') }}">List</a>
                 </div>
             </div>
         </li>
