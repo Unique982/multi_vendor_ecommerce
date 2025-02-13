@@ -60,7 +60,14 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['record'] = Category::find($id);
+        if($data['record']==null){
+            request()->session()->flash('error','Category not found');
+            return redirect()->route('admin.category.index');
+
+        }
+        $categories=Category::all();
+        return view('admin.category.edit',compact('data','categories'));
     }
 
     /**
@@ -68,14 +75,36 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data['record'] = Category::find($id);
+        if($data['record']==null){
+            request()->session()->flash('error','Category not found');
+            return view('backend.category.index');  
+        }
+        $data['record']->update($request->all());
+        request()->session()->flash('success', 'Category updated successfully');
+        return redirect()->route('backend.category.index');
+       
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request ,string $id)
     {
-        //
+        $data['record'] = Category::find($id);
+        if($data['record']==null){
+            request()->session()->flash('error','Category not found');
+            return redirect()->route('backend.category.index');
+        }
+        else{
+            if($data['record']->delete()){
+                
+                $request->session()->flash('success','Delete Successfully');
+            }else {
+                $request->session()->flash('error',' Delete Failed');
+            }
+        }
+        return redirect()->route('backend.category.index');
     }
 }

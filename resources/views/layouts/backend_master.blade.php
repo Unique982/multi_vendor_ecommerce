@@ -84,8 +84,8 @@
             <div id="collapseTwo0" class="collapse" aria-labelledby="headingTwo0" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Manage vendor</h6>
-                    <a class="collapse-item" href="">Create</a>
-                    <a class="collapse-item" href="">List</a>
+                    <a class="collapse-item" href="{{ route('backend.vendor.create') }}">Create</a>
+                    <a class="collapse-item" href="{{ route('backend.vendor.index') }}">List</a>
                 </div>
             </div>
         </li>
@@ -97,9 +97,9 @@
             </a>
             <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo1" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Category</h6>
-                    <a class="collapse-item" href="">Create</a>
-                    <a class="collapse-item" href="">List</a>
+                    <h6 class="collapse-header">Product</h6>
+                    <a class="collapse-item" href="{{ route('backend.product.create') }}">Create</a>
+                    <a class="collapse-item" href="{{ route('backend.product.index') }}">List</a>
                 </div>
             </div>
         </li>

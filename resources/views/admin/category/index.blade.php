@@ -37,7 +37,7 @@
                                 
                                 <td>
                                     <a href="{{route('backend.category.edit',$record->id) }}" class="btn btn-success mb-2 btn-sm">{{ __('Edit') }}</a>
-                                    <form action="{{route('backend.category.destroy',$record->id)}}" method="post"  style="display:inline-block">
+                                    <form action="{{route('backend.category.destroy',$record->id)}}" method="POST" style="display:inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger mb-2 btn-sm" onclick="return confirm('Are you Sure')">Delete</button>
@@ -58,6 +58,5 @@
             </div>
         </div>
     </div>
-</div>
-</div>
+
 @endsection
