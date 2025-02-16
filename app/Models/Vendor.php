@@ -12,9 +12,9 @@ class Vendor extends Model
   
 
     protected $fillable = ['user_id','shop_name','shop_description','logo','banner','phone','address'
-,'status','created_at','updated_at'];
+,'status'];
 
-public function users(){
+public function user(){
     return $this->belongsTo(User::class);
 }
 }

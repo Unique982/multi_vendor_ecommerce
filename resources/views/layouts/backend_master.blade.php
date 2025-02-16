@@ -42,7 +42,8 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fa-solid fa-bowl-food" style="color: #ffffff;"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Admin</div>
+           
+            <div class="sidebar-brand-text mx-3">{{ Auth::user()->role }}</div>
         </a>
 
         <!-- Divider -->
@@ -50,9 +51,10 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="fa-solid fa-gauge" style="color: #fffefc;"></i>
                 <span>Dashboard</span></a>
+                
         </li>
 
         <!-- Divider -->
@@ -60,6 +62,7 @@
        
 
         <!-- Nav Item - Pages Collapse Menu -->
+        @if(Auth::user()->role=='admin')
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
@@ -89,6 +92,9 @@
                 </div>
             </div>
         </li>
+        @endif
+        @if(Auth::check() && (Auth::user()->role=='vendor'|| Auth::user()->role=='admin'))
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1"
                aria-expanded="true" aria-controls="collapseTwo1">
@@ -104,7 +110,7 @@
             </div>
         </li>
 
-
+@endif
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -321,9 +327,9 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                            <span class="mr-2 d-none d-lg-inline text-white max-lg:10px">{{ Auth::user()->name }}</span>
                             <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                                 src="{{ asset('assets/backend/img/3135715.png') }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

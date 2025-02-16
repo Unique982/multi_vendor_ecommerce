@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id();
         $table->unsignedBigInteger('user_id');
         $table->string('shop_name');
-        $table->string('shop_slug')->unique();
+        
         $table->text('shop_description');
         $table->string('logo')->nullable();
         $table->string('banner')->nullable();

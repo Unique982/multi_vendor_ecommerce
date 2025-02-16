@@ -11,6 +11,7 @@
                     Dasboard Details
                 </div>
                 <div class="card-body">
+                    
                     This card uses Bootstrap's default styling with no utility classes added. Global
                     styles are the only things modifying the look and feel of this default card example.
                 </div>
